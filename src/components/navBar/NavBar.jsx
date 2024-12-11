@@ -11,12 +11,11 @@ const Navbar = () => {
     return (
         <nav className="bg-[#121618] text-white p-4 md:h-[100px] relative">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
-                {/* Logo or Title */}
+               
                 <div className="text-2xl font-bold">
                     <Link to="/"><img src="../../../public/logo3.png" alt="" className="md:w-16 w-10" /></Link>
                 </div>
-
-                {/* Desktop menu */}
+              
                 <div className="hidden lg:flex space-x-6 font-oswald font-extralight absolute text-2xl bottom-0 right-36 mb-2 mr-4">
                     <Link to="/" className="hover:text-gray-300">Home</Link>
                     <Link to="/" className="block text-white  hover:text-gray-300">Menu</Link>
@@ -24,8 +23,7 @@ const Navbar = () => {
                     <Link to="/" className="hover:text-gray-300">Make Reservation</Link>
                     <Link to="/" className="hover:text-gray-300">Contact Us</Link>
                 </div>
-
-                {/* Hamburger icon (visible on mobile) */}
+                
                 <div className="lg:hidden">
                     <button onClick={toggleMenu} className="text-white focus:outline-none">
                         {isOpen ? (

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import ContactUs from './footerComponents/ContactUs'
 import Socials from './footerComponents/Socials'
 import FindUs from './footerComponents/FindUs'
@@ -8,7 +6,7 @@ function Footer() {
     return (
         <footer>
             <div className='bg-black flex flex-col lg:flex-row px-10 lg:px-40 py-20 md:gap-4 justify-center items-center'>
-                {/* Socials will be shown first on mobile */}
+               
                 <div className="w-full lg:w-1/3 flex flex-col  order-1 md:order-2">
                     <Socials />
                 </div>

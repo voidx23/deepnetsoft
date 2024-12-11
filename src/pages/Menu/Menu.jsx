@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../../components/navBar/NavBar';
 import Footer from '../../components/footer/Footer';
 import axios from 'axios';
@@ -6,9 +6,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 
 function Menu() {
-    const [menus, setMenus] = useState([]); // State to store menu categories
-    const [menuItems, setMenuItems] = useState([]); // State to store menu items for a selected category
-    const [selectedCategoryId, setSelectedCategoryId] = useState(''); // State to store selected category ID
+    const [menus, setMenus] = useState([]); 
+    const [menuItems, setMenuItems] = useState([]);
+    const [selectedCategoryId, setSelectedCategoryId] = useState(''); 
     const [selectedCategoryName, setSelectedCategoryName] = useState('Select a Category');
     const [isLoading, setIsLoading] = useState(true);
 
@@ -16,12 +16,12 @@ function Menu() {
 
     console.log(selectedCategoryName)
 
-    // Fetch menu categories from the backend
+  
     useEffect(() => {
         const fetchMenus = async () => {
             try {
-                const response = await axios.get('/menus/get-main'); // Adjust this URL to match your API endpoint
-                setMenus(response.data); // Assuming the API response is an array of menu categories
+                const response = await axios.get('/menus/get-main'); 
+                setMenus(response.data); 
             } catch (error) {
                 console.error('Error fetching menus:', error);
             }
@@ -29,22 +29,22 @@ function Menu() {
         fetchMenus();
     }, []);
     useEffect(() => {
-        // Simulate a delay to show the loader animation
+       
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 1000); // Adjust the timeout as needed
+        }, 1000); 
 
         return () => clearTimeout(timer);
     }, []);
 
-    // Fetch menu items based on the selected category ID
+    
     useEffect(() => {
 
         if (selectedCategoryId) {
             const fetchMenuItems = async () => {
                 try {
-                    const response = await axios.get(`/menu-items/item/${selectedCategoryId}`); // Adjust this URL to match your API endpoint
-                    setMenuItems(response.data); // Assuming the API response is an array of menu items
+                    const response = await axios.get(`/menu-items/item/${selectedCategoryId}`); 
+                    setMenuItems(response.data); 
                 } catch (error) {
                     console.error('Error fetching menu items:', error);
                 }
@@ -52,7 +52,7 @@ function Menu() {
             fetchMenuItems();
 
         }
-    }, [selectedCategoryId]); // Depend only on the ID, not the name
+    }, [selectedCategoryId]); 
 
     return (
         <>
@@ -71,34 +71,34 @@ function Menu() {
             <section>
                 <div className="custom-bg-2 h-28 flex items-center justify-center space-x-4 font-oswald text-2xl font-medium">
                     {menus.length > 0 ? (
-                       <Swiper
-                       spaceBetween={10} // Adjust space between slides
-                       slidesPerView={5} // Number of slides visible at a time
-                       centeredSlides={true} // Ensures slides are centered
-                       breakpoints={{
-                           640: { slidesPerView: 2, spaceBetween: 10 },
-                           768: { slidesPerView: 3, spaceBetween: 15 },
-                           1024: { slidesPerView: 5, spaceBetween: 20 },
-                       }}
-                       loop={true}
-                       autoplay={{ delay: 3000 }}
-                       className="swiper-wrapper-center" // Optional custom class for debugging
-                   >
-                       {menus.map((menu) => (
-                           <SwiperSlide key={menu._id} className="flex justify-center">
-                               <button
-                                   className="w-[150px] h-[70px] bg-black text-shadow-2 text-white border mx-20 border-blue-500"
-                                   onClick={() => {
-                                       setSelectedCategoryId(menu._id);
-                                       setSelectedCategoryName(menu.name);
-                                   }}
-                               >
-                                   {menu.name}
-                               </button>
-                           </SwiperSlide>
-                       ))}
-                   </Swiper>
-                   
+                        <Swiper
+                            spaceBetween={10} 
+                            slidesPerView={5} 
+                            centeredSlides={true}
+                            breakpoints={{
+                                640: { slidesPerView: 2, spaceBetween: 10 },
+                                768: { slidesPerView: 3, spaceBetween: 15 },
+                                1024: { slidesPerView: 5, spaceBetween: 20 },
+                            }}
+                            loop={true}
+                            autoplay={{ delay: 3000 }}
+                            className="swiper-wrapper-center" 
+                        >
+                            {menus.map((menu) => (
+                                <SwiperSlide key={menu._id} className="flex justify-center">
+                                    <button
+                                        className=" h-[70px] bg-black text-shadow-2 text-white border mx-20 border-blue-500"
+                                        onClick={() => {
+                                            setSelectedCategoryId(menu._id);
+                                            setSelectedCategoryName(menu.name);
+                                        }}
+                                    >
+                                        {menu.name}
+                                    </button>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+
                     ) : (
                         <p>Loading menus...</p>
                     )}
@@ -106,22 +106,22 @@ function Menu() {
             </section>
 
             <section>
-                {/* Display selected category's items */}
+               
                 <div className="custom-bg-3 min-h-[80vh] flex justify-center items-center">
                     <div className="border border-white w-[90%] py-10 max-w-[1350px] mt-10">
-                        {/* Header with lines */}
+                       
                         <div className="flex items-center justify-center my-6">
-                            {/* Left Line */}
+                         
                             <div className="w-16 sm:w-20 h-[3px] bg-slate-300"></div>
-                            {/* Heading */}
+                            
                             <h1 className="font-oswald font-semibold text-shadow text-white text-2xl sm:text-4xl md:text-6xl text-center mx-4">
                                 {selectedCategoryName}
                             </h1>
-                            {/* Right Line */}
+                            
                             <div className="w-16 sm:w-20 h-[3px] bg-slate-300"></div>
                         </div>
 
-                        {/* Display menu items */}
+                        
                         <div className="text-white px-6 sm:px-10 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
                             {isLoading ? (
                                 <div className="flex justify-center items-center col-span-2">

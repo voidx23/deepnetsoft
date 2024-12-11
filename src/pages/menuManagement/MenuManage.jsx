@@ -3,25 +3,23 @@ import axios from 'axios';
 import Navbar from '../../components/navBar/NavBar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// Set the Axios base URL globally
-axios.defaults.baseURL = 'https://deppnetsoft-backend.onrender.com';  //Your backend server URL
+axios.defaults.baseURL = 'https://deppnetsoft-backend.onrender.com';  
 
 function MenuManage() {
-    const [mainMenus, setMainMenus] = useState([]); // To store main menu list
-    const [menuItems, setMenuItems] = useState([]); // To store menu items
-    const [newMainMenu, setNewMainMenu] = useState(''); // For adding a new main menu
-    const [selectedMenu, setSelectedMenu] = useState(''); // For dropdown selection
+    const [mainMenus, setMainMenus] = useState([]); 
+    const [menuItems, setMenuItems] = useState([]); 
+    const [newMainMenu, setNewMainMenu] = useState(''); 
+    const [selectedMenu, setSelectedMenu] = useState('');
     const [menuItemData, setMenuItemData] = useState({
         name: '',
         description: '',
         price: '',
     });
-
-    // Fetch existing data from backend
+    
     useEffect(() => {
         async function fetchData() {
             try {
-                const menuResponse = await axios.get('/menus/get-main'); // Relative path works with the base URL set
+                const menuResponse = await axios.get('/menus/get-main'); 
                 setMainMenus(menuResponse.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -29,8 +27,7 @@ function MenuManage() {
         }
         fetchData();
     }, []);
-
-    // Add a new main menu
+    
     const addMainMenu = async () => {
         if (newMainMenu.trim()) {
             try {
@@ -45,16 +42,14 @@ function MenuManage() {
             }
         }
     };
-
-    // Add a new menu item
+   
     const addMenuItem = async () => {
         if (selectedMenu && menuItemData.name && menuItemData.description && menuItemData.price) {
             const formData = new FormData();
             formData.append('name', menuItemData.name);
             formData.append('description', menuItemData.description);
             formData.append('price', menuItemData.price);
-
-            // Find the selected main menu's _id and send it
+           
             const selectedMainMenu = mainMenus.find(menu => menu.name === selectedMenu);
             if (selectedMainMenu) {
                 formData.append('menuId', selectedMainMenu._id); // Send only _id
@@ -66,11 +61,11 @@ function MenuManage() {
                 });
 
            
-                setMenuItems([...menuItems, response.data]); // Update menuItems list
+                setMenuItems([...menuItems, response.data]); 
 
-                // Clear the form after successful submission
-                setMenuItemData({ name: '', description: '', price: '' }); // Reset menuItemData
-                setSelectedMenu(''); // Reset selectedMenu
+                
+                setMenuItemData({ name: '', description: '', price: '' }); 
+                setSelectedMenu(''); 
             } catch (error) {
                 console.error('Error adding menu item:', error);
             }
