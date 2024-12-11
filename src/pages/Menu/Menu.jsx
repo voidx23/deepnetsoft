@@ -69,40 +69,41 @@ function Menu() {
             </section>
 
             <section>
-                <div className="custom-bg-2 h-28 flex items-center justify-center font-oswald text-2xl font-medium">
+                <div className="custom-bg-2 h-28 flex items-center justify-center space-x-4 font-oswald text-2xl font-medium">
                     {menus.length > 0 ? (
-                        <Swiper
-                            spaceBetween={10} // Adjust space between slides
-                            slidesPerView={5} // Number of slides visible at a time
-                            centeredSlides={true} // Ensures slides are centered
-                            breakpoints={{
-                                640: { slidesPerView: 2, spaceBetween: 10 }, // For mobile
-                                768: { slidesPerView: 3, spaceBetween: 15 }, // For tablets
-                                1024: { slidesPerView: 5, spaceBetween: 20 }, // For desktops
-                            }}
-                            loop={true}
-                            autoplay={{ delay: 3000 }}
-                        >
-                            {menus.map((menu) => (
-                                <SwiperSlide key={menu._id} className="flex justify-center">
-                                    <button
-                                        className="w-full max-w-[120px] h-[70px] bg-black text-shadow-2 text-white border border-blue-500"
-                                        onClick={() => {
-                                            setSelectedCategoryId(menu._id);
-                                            setSelectedCategoryName(menu.name);
-                                        }}
-                                    >
-                                        {menu.name}
-                                    </button>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                       <Swiper
+                       spaceBetween={10} // Adjust space between slides
+                       slidesPerView={5} // Number of slides visible at a time
+                       centeredSlides={true} // Ensures slides are centered
+                       breakpoints={{
+                           640: { slidesPerView: 2, spaceBetween: 10 },
+                           768: { slidesPerView: 3, spaceBetween: 15 },
+                           1024: { slidesPerView: 5, spaceBetween: 20 },
+                       }}
+                       loop={true}
+                       autoplay={{ delay: 3000 }}
+                       className="swiper-wrapper-center" // Optional custom class for debugging
+                   >
+                       {menus.map((menu) => (
+                           <SwiperSlide key={menu._id} className="flex justify-center">
+                               <button
+                                   className="w-[150px] h-[70px] bg-black text-shadow-2 text-white border mx-20 border-blue-500"
+                                   onClick={() => {
+                                       setSelectedCategoryId(menu._id);
+                                       setSelectedCategoryName(menu.name);
+                                   }}
+                               >
+                                   {menu.name}
+                               </button>
+                           </SwiperSlide>
+                       ))}
+                   </Swiper>
+                   
                     ) : (
                         <p>Loading menus...</p>
                     )}
                 </div>
             </section>
-
 
             <section>
                 {/* Display selected category's items */}
