@@ -8,6 +8,8 @@ function Menu() {
     const [menuItems, setMenuItems] = useState([]); // State to store menu items for a selected category
     const [selectedCategoryId, setSelectedCategoryId] = useState(''); // State to store selected category ID
     const [selectedCategoryName, setSelectedCategoryName] = useState('Select a Category');
+    const [isLoading, setIsLoading] = useState(true);
+
     axios.defaults.baseURL = 'https://deppnetsoft-backend.onrender.com';
 
     console.log(selectedCategoryName)
@@ -23,6 +25,14 @@ function Menu() {
             }
         };
         fetchMenus();
+    }, []);
+    useEffect(() => {
+        // Simulate a delay to show the loader animation
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 1000); // Adjust the timeout as needed
+
+        return () => clearTimeout(timer);
     }, []);
 
     // Fetch menu items based on the selected category ID
@@ -95,7 +105,11 @@ function Menu() {
 
                         {/* Display menu items */}
                         <div className="text-white px-6 sm:px-10 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-                            {menuItems.length > 0 ? (
+                            {isLoading ? (
+                                <div className="flex justify-center items-center col-span-2">
+                                    <div className="loader"></div>
+                                </div>
+                            ) : menuItems.length > 0 ? (
                                 menuItems.map((item) => (
                                     <div key={item._id}>
                                         <h1 className="font-oswald text-2xl sm:text-3xl flex justify-between items-baseline">
@@ -109,7 +123,7 @@ function Menu() {
                                     </div>
                                 ))
                             ) : (
-                                <p>Loading menu items...</p>
+                                <p className="text-center text-slate-500 col-span-2">No menu items available.</p>
                             )}
                         </div>
                     </div>

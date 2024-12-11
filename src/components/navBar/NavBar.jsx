@@ -54,8 +54,8 @@ const Navbar = () => {
                 </div>
                 <div className="space-y-6 p-4">
                     <Link to="/" className="block text-white text-lg hover:text-gray-300">Home</Link>
-                    <Link to="/user/menu" className="block text-white text-lg hover:text-gray-300">Menu</Link>
-                    <Link to="/user/menu-manage" className="block text-white  hover:text-gray-300">Menu Management</Link>
+                    <Link to="/menu" className="block text-white text-lg hover:text-gray-300">Menu</Link>
+                    <Link to="/menu-manage" className="block text-white  hover:text-gray-300">Menu Management</Link>
                     <Link to="/reservation" className="block text-white text-lg hover:text-gray-300">Make Reservation</Link>
                     <Link to="/contact" className="block text-white text-lg hover:text-gray-300">Contact Us</Link>
                 </div>
