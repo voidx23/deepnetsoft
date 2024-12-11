@@ -9,7 +9,6 @@ function UserRoutes() {
       <Routes>
         <Route path="menu" element={<Menu />} />
         <Route path="menu-manage" element={<MenuManage />} />
-        <Route path="*" element={<h2>Page Not Found</h2>} />
       </Routes>
     </div>
   );

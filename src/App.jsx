@@ -7,7 +7,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<UserRoutes />} />
-        <Route path="*" element={<h1>Page Not Found</h1>} />
       </Routes>
     </Router>
   );
