@@ -7,7 +7,7 @@ function UserRoutes() {
   return (
     <div>
       <Routes>
-        <Route path="menu" element={<Menu />} />
+        <Route path="/" element={<Menu />} />
         <Route path="menu-manage" element={<MenuManage />} />
       </Routes>
     </div>

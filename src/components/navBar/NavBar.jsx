@@ -19,10 +19,10 @@ const Navbar = () => {
                 {/* Desktop menu */}
                 <div className="hidden lg:flex space-x-6 font-oswald font-extralight absolute text-2xl bottom-0 right-36 mb-2 mr-4">
                     <Link to="/" className="hover:text-gray-300">Home</Link>
-                    <Link to="/user/menu" className="block text-white  hover:text-gray-300">Menu</Link>
-                    <Link to="/user/menu-manage" className="block text-white  hover:text-gray-300">Menu Management</Link>
-                    <Link to="/reservation" className="hover:text-gray-300">Make Reservation</Link>
-                    <Link to="/contact" className="hover:text-gray-300">Contact Us</Link>
+                    <Link to="/" className="block text-white  hover:text-gray-300">Menu</Link>
+                    <Link to="/menu-manage" className="block text-white  hover:text-gray-300">Menu Management</Link>
+                    <Link to="/" className="hover:text-gray-300">Make Reservation</Link>
+                    <Link to="/" className="hover:text-gray-300">Contact Us</Link>
                 </div>
 
                 {/* Hamburger icon (visible on mobile) */}
