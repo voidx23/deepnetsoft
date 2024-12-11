@@ -3,7 +3,7 @@ import axios from 'axios';
 import Navbar from '../../components/navBar/NavBar';
 
 // Set the Axios base URL globally
-axios.defaults.baseURL = 'http://localhost:3000'; // Your backend server URL
+axios.defaults.baseURL = 'https://deppnetsoft-backend.onrender.com';  //Your backend server URL
 
 function MenuManage() {
     const [mainMenus, setMainMenus] = useState([]); // To store main menu list

@@ -8,7 +8,7 @@ function Menu() {
     const [menuItems, setMenuItems] = useState([]); // State to store menu items for a selected category
     const [selectedCategoryId, setSelectedCategoryId] = useState(''); // State to store selected category ID
     const [selectedCategoryName, setSelectedCategoryName] = useState('Select a Category');
-    axios.defaults.baseURL = 'http://localhost:3000';
+    axios.defaults.baseURL = 'https://deppnetsoft-backend.onrender.com';
 
     console.log(selectedCategoryName)
 
