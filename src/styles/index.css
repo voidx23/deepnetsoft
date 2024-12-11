@@ -32,3 +32,16 @@
 .text-shadow-2 {
     text-shadow: 2px 1px 0 #800020;
 }
+
+.swiper-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center each slide */
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
